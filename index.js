@@ -12,6 +12,12 @@ const app = express();
 
 app.use(express.json());
 
+//---template engine
+app.set('view engine' , 'pug');
+app.set('views' , './views')
+
+
+
 //console.log(`NODE-ENV : ${process.env.NODE_ENV}`);
 //console.log(`app : ${app.get('env')}`);
 
@@ -33,6 +39,11 @@ const genres = [
     { id: 2, name: 'Horror' },  
     { id: 3, name: 'Romance' },  
 ];
+
+
+
+app.get('/' , (req , res) =>  res.render('index' , {title : 'MY express App' , message : 'HELLO WORLD :))'}) );
+
 
 
 app.get('/api/genres' , (req , res) =>  res.send(genres) );
